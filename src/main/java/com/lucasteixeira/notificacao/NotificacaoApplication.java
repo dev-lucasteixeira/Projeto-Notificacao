@@ -3,7 +3,7 @@ package com.lucasteixeira.notificacao;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.lucasteixeira.notificacao")
 public class NotificacaoApplication {
 
 	public static void main(String[] args) {
