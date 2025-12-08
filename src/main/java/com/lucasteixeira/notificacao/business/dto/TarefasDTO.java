@@ -2,7 +2,7 @@ package com.lucasteixeira.notificacao.business.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import com.lucasteixeira.notificacao.business.enums.enums.StatusNotificacaoEnum;
+import com.lucasteixeira.notificacao.business.enums.StatusNotificacaoEnum;
 import lombok.*;
 
 import java.time.LocalDateTime;
