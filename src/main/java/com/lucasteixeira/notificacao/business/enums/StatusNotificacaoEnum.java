@@ -1,4 +1,4 @@
-package com.lucasteixeira.notificacao.business.enums.enums;
+package com.lucasteixeira.notificacao.business.enums;
 
 public enum StatusNotificacaoEnum {
     PENDENTE,
