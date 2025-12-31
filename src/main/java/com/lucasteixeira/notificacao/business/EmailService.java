@@ -3,7 +3,6 @@ package com.lucasteixeira.notificacao.business;
 import com.lucasteixeira.notificacao.business.dto.TarefasDTO;
 import com.lucasteixeira.notificacao.infrastructure.Exceptions.EmailException;
 import jakarta.mail.MessagingException;
-import jakarta.mail.internet.AddressException;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
