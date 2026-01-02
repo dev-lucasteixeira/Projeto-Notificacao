@@ -1,7 +1,7 @@
-package com.lucasteixeira.notificacao.business;
+package com.lucasteixeira.notificacao.business.services;
 
 import com.lucasteixeira.notificacao.business.dto.TarefasDTO;
-import com.lucasteixeira.notificacao.infrastructure.Exceptions.EmailException;
+import com.lucasteixeira.notificacao.infrastructure.exceptions.EmailException;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
@@ -18,7 +18,7 @@ import java.nio.charset.StandardCharsets;
 
 @Service
 @RequiredArgsConstructor
-public class EmailService {
+public class EmailTarefasService {
 
     private final JavaMailSender javaMailSender;
     private final TemplateEngine templateEngine;
