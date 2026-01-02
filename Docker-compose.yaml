@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  notificacao-app:
+    build: .
+    container_name: notificacao-ms
+    ports:
+      - "8083:8083"
+    environment:
+      - DB_HOST=notificacao-db
+      - DB_PASSWORD=1234
+    depends_on:
+      - notificacao-db
+
+  notificacao-db:
+    image: postgres:latest
+    container_name: notificacao-db
+    environment:
+      POSTGRES_DB: db_notificacao
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5434:5432"

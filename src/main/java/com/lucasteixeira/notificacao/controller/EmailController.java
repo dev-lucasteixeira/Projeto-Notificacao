@@ -1,7 +1,7 @@
 package com.lucasteixeira.notificacao.controller;
 
 
-import com.lucasteixeira.notificacao.business.EmailService;
+import com.lucasteixeira.notificacao.business.services.EmailTarefasService;
 import com.lucasteixeira.notificacao.business.dto.TarefasDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/email")
 public class EmailController {
 
-    private final EmailService emailService;
+    private final EmailTarefasService emailTarefasService;
 
     @PostMapping
     public ResponseEntity<Void> enviarEmail(@RequestBody TarefasDTO dto){
-        emailService.enviaEmail(dto);
+        emailTarefasService.enviaEmail(dto);
         return ResponseEntity.ok().build();
     }
 }

@@ -1,4 +1,4 @@
-package com.lucasteixeira.notificacao.infrastructure.Exceptions;
+package com.lucasteixeira.notificacao.infrastructure.exceptions;
 
 public class EmailException extends RuntimeException{
     public EmailException(String message) {
