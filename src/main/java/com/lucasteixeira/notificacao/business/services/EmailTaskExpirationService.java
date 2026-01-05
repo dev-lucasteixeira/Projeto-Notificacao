@@ -18,7 +18,7 @@ import java.nio.charset.StandardCharsets;
 
 @Service
 @RequiredArgsConstructor
-public class EmailTarefasService {
+public class EmailTaskExpirationService {
 
     private final JavaMailSender javaMailSender;
     private final TemplateEngine templateEngine;

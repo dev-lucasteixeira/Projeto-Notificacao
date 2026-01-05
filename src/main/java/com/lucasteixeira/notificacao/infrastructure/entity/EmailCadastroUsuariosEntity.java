@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "tb_emails")
 @Builder
-public class EmailCadastroEntity {
+public class EmailCadastroUsuariosEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
