@@ -39,7 +39,7 @@ dependencies {
     runtimeOnly 'org.postgresql:postgresql'
     implementation 'io.micrometer:micrometer-tracing-bridge-brave'
     implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
-    implementation 'io.github.openfeign:feign-micrometer'
+    implementation 'io.github.openfeign:feign-micrometer:12.5'
 }
 
 tasks.named('test') {
