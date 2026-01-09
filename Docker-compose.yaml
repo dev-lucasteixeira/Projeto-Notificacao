@@ -7,17 +7,17 @@ services:
     ports:
       - "8083:8083"
     environment:
-      - DB_HOST=notificacao-db
+      - DB_HOST=db_notificacao
       - DB_PASSWORD=1234
     depends_on:
       - notificacao-db
 
   notificacao-db:
     image: postgres:latest
-    container_name: notificacao-db
+    container_name: db_notificacao
     environment:
       POSTGRES_DB: db_notificacao
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
     ports:
-      - "5434:5432"
+      - "5435:5432"

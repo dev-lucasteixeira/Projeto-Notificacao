@@ -20,31 +20,37 @@ public class EmailCadastroUsuariosService {
     private final EmailCadastroUsuariosRespository emailCadastroUsuariosRespository;
     private final JavaMailSender emailSender;
 
-    @Value(value = "${spring.mail.username}")
+    @Value("${spring.mail.username}")
     private String emailFrom;
 
-
     @Transactional
-    public EmailCadastroUsuariosEntity sendEmailCadastroUsuarios(EmailCadastroUsuariosEntity emailCadastroUsuariosEntity){
-        try{
-            emailCadastroUsuariosEntity.setSendDateEmail(LocalDateTime.now());
-            emailCadastroUsuariosEntity.setEmailFrom(emailFrom);
+    public EmailCadastroUsuariosEntity sendEmailCadastroUsuarios(EmailCadastroUsuariosEntity emailEntity) {
+        try {
+            // 1. Prepara os dados da entidade
+            emailEntity.setSendDateEmail(LocalDateTime.now());
+            emailEntity.setEmailFrom(emailFrom);
 
+            // 2. Validação simples antes de enviar
+            if (emailEntity.getEmailTo() == null || emailEntity.getText() == null) {
+                throw new IllegalArgumentException("Destinatário ou corpo do e-mail estão vazios.");
+            }
 
+            // 3. Configura e envia a mensagem
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(emailFrom);
-            message.setTo(emailCadastroUsuariosEntity.getEmailTo());
-            message.setSubject(emailCadastroUsuariosEntity.getSubject());
-            message.setText(emailCadastroUsuariosEntity.getText());
+            message.setTo(emailEntity.getEmailTo());
+            message.setSubject(emailEntity.getSubject());
+            message.setText(emailEntity.getText());
+
             emailSender.send(message);
 
-            emailCadastroUsuariosEntity.setStatusEmail(StatusEmail.ENVIADO);
-        }catch (MailException e){
-            System.out.println("Erro ao enviar email");
+            emailEntity.setStatusEmail(StatusEmail.ENVIADO);
+        } catch (MailException | IllegalArgumentException e) {
+            System.err.println("Erro ao enviar email para: " + emailEntity.getEmailTo());
             e.printStackTrace();
-            emailCadastroUsuariosEntity.setStatusEmail(StatusEmail.COM_ERRO);
-        } finally {
-            return emailCadastroUsuariosRespository.save(emailCadastroUsuariosEntity);
+            emailEntity.setStatusEmail(StatusEmail.COM_ERRO);
         }
+
+        return emailCadastroUsuariosRespository.save(emailEntity);
     }
 }
